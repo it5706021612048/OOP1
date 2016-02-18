@@ -1,27 +1,39 @@
 import java.util.Scanner;
+
 public class Skocimis {
+	static int n[] = new int[3];
+	static int Ans;
 	public static void main(String[] args) {
-		int n1, n2, n3;
+		Input();
+		Cal();
+		Display();
+	}
+	
+	public static void Input() {
 		Scanner scan = new Scanner(System.in);
-		do {
-			System.out.print("Enter 3 integer (0 < Number1 < Number2 < Number3 < 100): ");
-			n1 = scan.nextInt();
-			n2 = scan.nextInt();
-			n3 = scan.nextInt();
-			if (n1 <= 0 || n1 >= 100) {
-				System.out.println("Invalid Input. Please enter again!!!");
-			} else if (n2 <= 0 || n2 >= 100) {
-				System.out.println("Invalid Input. Please enter again!!!");
-			} else if (n3 <= 0 || n3 >= 100) {
-				System.out.println("Invalid Input. Please enter again!!!");
-			} else if (n2 <= n1) {
-				System.out.println("Number2 must more than Number1. Please enter again!!!");
-			} else if (n3 <= n2) {
-				System.out.println("Number3 must more than Number2. Please enter again!!!");
-			}
-		} while (n1 <= 0 || n1 >= 100 || n2 <= 0 || n2 >= 100 || n3 <= 0 || n3 >= 100 || n3 < n1 || n3 < n2 || n2 < n1
-				|| n1 > n2 || n1 > n3);
-		System.out.println("----------------- Output ----------------------- ");
-		System.out.println(" Most played : " + ((n3 - n2) - 1) + " time.");
+		System.out.print("Input 3 integer (0 < A < B < C < 100): ");
+		for (int i = 0; i < n.length; i++) {
+		n[i] = scan.nextInt();
+		}
+	}
+	
+	public static void Cal() {
+		if (n[0] <= 0 || n[0] >= 100) {
+			System.out.println("Invalid Input. Please enter again!!!");
+		} else if (n[1] <= 0 || n[1] >= 100) {
+			System.out.println("Invalid Input. Please enter again!!!");
+		} else if (n[2] <= 0 || n[2] >= 100) {
+			System.out.println("Invalid Input. Please enter again!!!");
+		} else if (n[1] <= n[0]) {
+			System.out.println("B must more than A. Please enter again!!!");
+		} else if (n[2] <= n[1]) {
+			System.out.println("C must more than B. Please enter again!!!");
+		}
+		Ans = ((n[2] - n[1]) - 1);
+	}
+	
+	public static void Display() {
+		System.out.println("------- Show Output -------- ");
+		System.out.println(" Most played : " + Ans + " time.");
 	}
 }
